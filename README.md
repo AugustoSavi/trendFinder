@@ -55,6 +55,9 @@ Learn how to set up Trend Finder and start monitoring trends in this video!
 Copy `.env.example` to `.env` and configure the following variables:
 
 ```
+# Choose AI provider: "ollama", "together", "openai"
+AI_PROVIDER=ollama
+
 # Optional: API key from Together AI for trend analysis (https://www.together.ai/)
 TOGETHER_API_KEY=your_together_api_key_here
 
@@ -63,6 +66,10 @@ DEEPSEEK_API_KEY=
 
 # Optional: API key from OpenAI for trend analysis (https://openai.com/)
 OPENAI_API_KEY=
+
+# Optional: API from ollama for trend analysis (https://ollama.com/)
+OLLAMA_BASE_URL=http://ollama:11434
+OLLAMA_MODEL=deepseek-r1:1.5b
 
 # Required if monitoring web pages (https://www.firecrawl.dev/)
 FIRECRAWL_API_KEY=your_firecrawl_api_key_here
@@ -132,17 +139,32 @@ DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/WEBHOOK/URL
    docker-compose down
    ```
 
+## Using Docker Compose with Local Ollama
+
+1. **Start the application with Docker Compose:**
+   ```bash
+   docker compose -f docker-compose-local.yml up --build -d
+   ```
+
+2. **Stop the application with Docker Compose:**
+   ```bash
+   docker compose -f docker-compose-local.yml down
+   ```
+
+
 ## Project Structure
 
 ```
 trend-finder/
 ├── src/
-│   ├── controllers/    # Request handlers
-│   ├── services/       # Business logic
-│   └── index.ts        # Application entry point
-├── .env.example        # Environment variables template
-├── package.json        # Dependencies and scripts
-└── tsconfig.json       # TypeScript configuration
+│   ├── controllers/       # Cron job & API controllers
+│   ├── services/          # Business logic (AI, scraping, notifications)
+│   └── index.ts           # Application entry point
+├── scripts/               # Utility scripts (e.g., Ollama entrypoint)
+├── .env.example           # Environment variables template
+├── package.json           # Dependencies & scripts
+├── tsconfig.json          # TypeScript configuration
+└── docker-compose*.yml    # Docker Compose configs
 ```
 
 ## Contributing

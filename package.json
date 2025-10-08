@@ -27,6 +27,7 @@
     "express-async-handler": "^1.2.0",
     "firecrawl": "^1.7.2",
     "node-cron": "^3.0.3",
+    "ollama": "0.5.18",
     "openai": "^4.82.0",
     "playht": "^0.13.0",
     "resend": "^4.0.1-alpha.0",

@@ -9,6 +9,10 @@ export const handleCron = async (): Promise<void> => {
     const rawStories = await scrapeSources(cronSources);
     const rawStoriesString = JSON.stringify(rawStories);
     const draftPost = await generateDraft(rawStoriesString);
+    if (!draftPost || typeof draftPost !== "string") {
+      console.log("No draft post generated.");
+      return;
+    }
     const result = await sendDraft(draftPost!);
     console.log(result);
   } catch (error) {

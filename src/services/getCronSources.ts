@@ -17,7 +17,7 @@ export async function getCronSources(): Promise<{ identifier: string }[]> {
             { identifier: "https://www.firecrawl.dev/blog" },
             { identifier: "https://openai.com/news/" },
             { identifier: "https://www.anthropic.com/news" },
-            { identifier: "https://news.ycombinator.com/" },
+            // { identifier: "https://news.ycombinator.com/" },
             {
               identifier:
                 "https://www.reuters.com/technology/artificial-intelligence/",
@@ -26,7 +26,7 @@ export async function getCronSources(): Promise<{ identifier: string }[]> {
             { identifier: "https://buttondown.com/ainews/archive/" },
           ]
         : []),
-      ...(hasXApiKey ? [{ identifier: "https://x.com/skirano" }] : []),
+      // ...(hasXApiKey ? [{ identifier: "https://x.com/skirano" }] : []),
     ];
 
     // Return the full objects instead of mapping to strings
